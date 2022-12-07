@@ -107,7 +107,7 @@ def addEvolucion():
             data_re[model].append(res[model][a]['rel_f1_micro'])
     df = pd.DataFrame(data_ner, index=arr)
     ax = df.plot.line()
-    plt.title('Evolucion en NER')
+    plt.title('Evolución en NER')
     plt.xlabel("Etapa")
     plt.ylabel("F1-micro (%)")
     plt.grid(axis = 'y')
@@ -116,7 +116,7 @@ def addEvolucion():
 
     df = pd.DataFrame(data_re, index=arr)
     ax = df.plot.line()
-    plt.title('Evolucion en RE')
+    plt.title('Evolución en RE')
     plt.xlabel("Etapa")
     plt.ylabel("F1-micro (%)")
     plt.grid(axis = 'y')
