@@ -135,7 +135,7 @@ def calculo_ent():
 
     return y_true,y_pred
 # Crear la matriz de confusion
-def conf_matrix(y_true, y_pred, filename, labels, ymap=None, figsize=(10,7)):
+def conf_matrix(y_true, y_pred, filename, labels, ymap=None, figsize=(10,7), title=None):
     """
     Generate matrix plot of confusion matrix with pretty annotations.
     The plot image is saved to disk.
@@ -177,6 +177,7 @@ def conf_matrix(y_true, y_pred, filename, labels, ymap=None, figsize=(10,7)):
     cm.index.name = 'Actual'
     cm.columns.name = 'Predicted'
     fig, ax = plt.subplots(figsize=figsize)
+    ax.set_title(title)
     sns.heatmap(cm, annot=annot, fmt='', ax=ax)
     plt.savefig(filename)
     
@@ -200,10 +201,10 @@ if __name__=='__main__':
     clases=["diag","pathogen","qol","other","env","biochem","treatment","medC","null"]
     y_true, y_pred=calculo_ent()
     if args.ne:
-        conf_matrix(y_true, y_pred, args.model+"_mc_ent.png", clases, ymap=None, figsize=(10,7))
+        conf_matrix(y_true, y_pred, args.model+"_mc_ent.png", clases, ymap=None, figsize=(10,7),title='Matriz de confusión de las entidades')
 
     clases=["diagnoses","influences","causes","other","is_type_of","treats","side_effect_of","has_symptom","is_similar_to","prevents","interaction","treat-medC","null",'incompleta']
     y_true, y_pred=calculo_rels()
     if args.nr:
-        conf_matrix(y_true, y_pred, args.model+"_mc_rel.png", clases, ymap=None, figsize=(20,14))
+        conf_matrix(y_true, y_pred, args.model+"_mc_rel.png", clases, ymap=None, figsize=(20,14),title='Matriz de confusión de las relaciones')
     
