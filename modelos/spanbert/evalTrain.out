@@ -1,0 +1,59 @@
+--- Entities (named entity recognition (NER)) ---
+An entity is considered correct if the entity type and span is predicted correctly
+
+                type    precision       recall     f1-score      support
+               other        90.72        83.81        87.13          105
+           treatment        91.60        99.14        95.22         1506
+            pathogen        62.89       100.00        77.22           61
+                diag        67.11        96.23        79.07           53
+                medC        88.34        98.18        93.00         2693
+             biochem        80.41        98.50        88.54          200
+                 env        73.66        97.06        83.76          170
+                 qol        64.22        89.74        74.87           78
+
+               micro        87.17        98.01        92.27         4866
+               macro        77.37        95.33        84.85         4866
+
+--- Relations ---
+
+Without named entity classification (NEC)
+A relation is considered correct if the relation type and the spans of the two related entities are predicted correctly (entity type is not considered)
+
+                type    precision       recall     f1-score      support
+              treats        68.57        94.75        79.56          419
+           diagnoses        25.44        85.29        39.19           34
+               other        23.81        31.25        27.03           64
+       is_similar_to         0.00         0.00         0.00            5
+              causes        65.45        89.72        75.69          798
+         has_symptom        49.76        80.47        61.49          128
+          influences        60.84        82.59        70.07          316
+          treat-medC         0.00         0.00         0.00           16
+         interaction        16.67        18.42        17.50           38
+      side_effect_of        83.33        65.22        73.17           69
+            prevents        77.78        64.29        70.39           98
+          is_type_of        60.51        74.22        66.67          256
+
+               micro        60.91        81.70        69.79         2241
+               macro        44.35        57.19        48.40         2241
+
+With named entity classification (NEC)
+A relation is considered correct if the relation type and the two related entities are predicted correctly (in span and entity type)
+
+                type    precision       recall     f1-score      support
+              treats        68.57        94.75        79.56          419
+           diagnoses        25.44        85.29        39.19           34
+               other        23.81        31.25        27.03           64
+       is_similar_to         0.00         0.00         0.00            5
+              causes        65.17        89.35        75.37          798
+         has_symptom        49.76        80.47        61.49          128
+          influences        57.58        78.16        66.31          316
+          treat-medC         0.00         0.00         0.00           16
+         interaction        14.29        15.79        15.00           38
+      side_effect_of        83.33        65.22        73.17           69
+            prevents        76.54        63.27        69.27           98
+          is_type_of        59.24        72.66        65.26          256
+
+               micro        60.15        80.68        68.92         2241
+               macro        43.64        56.35        47.64         2241
+2022-12-07 18:02:07,534 [MainThread  ] [INFO ]  Logged in: base/corpus/modelos/spanbert/data/log/eval_train/2022-12-07_18:00:37.793964
+
