@@ -1,0 +1,98 @@
+{
+    "entities": {
+        "medC": {
+            "short": "medC",
+            "verbose": "medC"
+        },
+        "treatment": {
+            "short": "treatment",
+            "verbose": "treatment"
+        },
+        "env": {
+            "short": "env",
+            "verbose": "env"
+        },
+        "other": {
+            "short": "other",
+            "verbose": "other"
+        },
+        "biochem": {
+            "short": "biochem",
+            "verbose": "biochem"
+        },
+        "pathogen": {
+            "short": "pathogen",
+            "verbose": "pathogen"
+        },
+        "qol": {
+            "short": "qol",
+            "verbose": "qol"
+        },
+        "diag": {
+            "short": "diag",
+            "verbose": "diag"
+        }
+    },
+    "relations": {
+        "causes": {
+            "short": "causes",
+            "verbose": "causes",
+            "symmetric": false
+        },
+        "influences": {
+            "short": "influences",
+            "verbose": "influences",
+            "symmetric": false
+        },
+        "other": {
+            "short": "other",
+            "verbose": "other",
+            "symmetric": false
+        },
+        "treats": {
+            "short": "treats",
+            "verbose": "treats",
+            "symmetric": false
+        },
+        "prevents": {
+            "short": "prevents",
+            "verbose": "prevents",
+            "symmetric": false
+        },
+        "is_type_of": {
+            "short": "is_type_of",
+            "verbose": "is_type_of",
+            "symmetric": false
+        },
+        "has_symptom": {
+            "short": "has_symptom",
+            "verbose": "has_symptom",
+            "symmetric": false
+        },
+        "interaction": {
+            "short": "interaction",
+            "verbose": "interaction",
+            "symmetric": false
+        },
+        "side_effect_of": {
+            "short": "side_effect_of",
+            "verbose": "side_effect_of",
+            "symmetric": false
+        },
+        "diagnoses": {
+            "short": "diagnoses",
+            "verbose": "diagnoses",
+            "symmetric": false
+        },
+        "is_similar_to": {
+            "short": "is_similar_to",
+            "verbose": "is_similar_to",
+            "symmetric": false
+        },
+        "treat-medC": {
+            "short": "treat-medC",
+            "verbose": "treat-medC",
+            "symmetric": false
+        }
+    }
+}
