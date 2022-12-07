@@ -310,7 +310,7 @@ if __name__=='__main__':
         json.dump(res,f,indent=4,ensure_ascii=False)
 
     if args.np:
-        create_types()
+        create_partition()
     
     if args.nt:
         create_types()
