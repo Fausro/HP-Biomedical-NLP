@@ -1,0 +1,7 @@
+,bert,biobert,bioreddit,clinical,covid,scibert,spanbert
+rel_nec_prec_micro,26.53,29.94,32.7,25.16,32.0,29.81,15.26
+rel_nec_rec_micro,12.79,16.39,17.05,13.11,15.74,10.16,12.46
+rel_nec_prec_macro,31.61,32.83,26.01,18.7,26.05,24.01,7.36
+rel_nec_rec_macro,8.84,10.65,11.51,8.21,11.39,6.5,7.52
+rel_nec_f1_micro,17.26,21.19,22.41,17.24,21.1,15.16,13.72
+rel_nec_f1_macro,12.67,14.13,14.34,10.36,14.71,9.66,7.17
