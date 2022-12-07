@@ -212,7 +212,7 @@ def summary():
 def create_types():
     print('> Creando types.json')
 
-    res=dict()
+    types=dict()
     ent=dict()
     rel=dict()
     for i in res:
@@ -228,10 +228,10 @@ def create_types():
             aux["symmetric"]=False
             rel[e["type"]]=aux
 
-    res["entities"]=ent
-    res["relations"]=rel
-    with open('types.json', 'w') as fres:
-        json.dump(res,fres,indent=4,ensure_ascii=False)
+    types["entities"]=ent
+    types["relations"]=rel
+    with open('types.json', 'w') as ftypes:
+        json.dump(types,ftypes,indent=4,ensure_ascii=False)
 
 def create_partition():
     print('> Creando las particiones')
