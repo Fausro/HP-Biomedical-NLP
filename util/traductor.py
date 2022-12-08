@@ -1,8 +1,11 @@
-import argparse,json,emoji
+import argparse,json,emoji,math
 from collections import Counter
 from tqdm import tqdm
 import regex as re
 from unidecode import unidecode
+import networkx as nx
+import matplotlib.pyplot as plt
+import matplotlib as mpl
 
 hizt = {"medC": "medC",
         "treat_therapy": "treatment",
@@ -290,6 +293,37 @@ def create_partition():
     with open('test.json', 'w') as ftest:
         json.dump(test,ftest,indent=4,ensure_ascii=False)
 
+def create_plot(figure_height=20,figure_width=20):
+    nodes=Counter()
+    edges=dict()
+    for i in res:
+        ents=[x['type'] for x in i['entities']]
+        nodes.update(ents)
+        for r in i['relations']:
+            mini=min(ents[r['head']],ents[r['tail']])
+            maxi=max(ents[r['head']],ents[r['tail']])
+            dir=(mini,maxi)
+            if dir in edges:
+                edges[dir]+=1
+            else:
+                edges[dir]=1
+    nodes_values=[x*40 for x in nodes.values()]
+    edges_values=[math.log2(x) for x in edges.values()]
+    G = nx.Graph()
+    G.add_nodes_from(nodes.keys())
+    G.add_edges_from(edges.keys())
+    cmap=plt.cm.plasma
+    colores_nodo=cmap([i/len(nodes_values) for i in range(len(nodes_values))])
+    fig, ax = plt.subplots(1, 1, figsize=(figure_height, figure_width))
+    layout=nx.spring_layout(G, k=5, iterations=100,seed=45)
+    nx.draw_networkx(G, pos=layout,width=edges_values,node_size=nodes_values,node_color=colores_nodo,with_labels=False)
+    aux=[]
+    for color,lab in zip(colores_nodo,list(nodes.keys())):
+        aux.append(mpl.lines.Line2D([],[],marker='o', ls='',c=color,label=lab))
+    plt.legend(handles=aux,loc=1 ,prop={'size': 26})
+    plt.savefig('corpus_plot.png')
+
+
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description='Traducir bear.jsonl a bear.json')
     # > bear.jsonl
@@ -303,6 +337,7 @@ if __name__=='__main__':
     parser.add_argument('-sf', metavar='summary_file',dest='summary_file',action='store',help='nombre para el fichero summary, default summary.json',default='summary.json')
     parser.add_argument('-np', action='store_false',help='crear particiones, default true',default=True)
     parser.add_argument('-nt', action='store_false',help='crear types, default true',default=True)
+    parser.add_argument('-nplot', action='store_false',help='crear plot del corpus, default true',default=True)
     args = parser.parse_args()
     
     res = tokenizer()
@@ -317,3 +352,6 @@ if __name__=='__main__':
     
     if args.ns:
         summary()
+
+    if args.nplot:
+        create_plot()
