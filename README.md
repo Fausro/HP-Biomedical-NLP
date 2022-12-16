@@ -1,4 +1,4 @@
-# NER eta RE, gizarte-ingurune batean erabaki klinikoak hartzeko
+# NER eta RE, sare soziala batean erabaki klinikoak hartzeko
 
 Hizkuntzaren prozesamenduaren zeregin nagusiak, hala nola entitateen erauzketa eta harremanen erauzketa, medikua bezalako domeinu espezifiko batean erronka irekia dago, eta are gehiago informazio-iturria sare sozialetatik badator, non hizkuntza informal prozesamendu egokia eragozten duen. Lan honetan erronka hori aurre egiteko hainbat irtenbide planteatzen dira. Horretarako, entitate eta harreman medikoekin tweetak ustiatu gabeko corpus batekin lan egingo da.
 
